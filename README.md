@@ -11,6 +11,9 @@ Sources used here are as follows:
 * https://www.raspberry-pi-geek.de/ausgaben/rpg/2018/08/der-dateimanager-midnight-commander/
 * https://tutorials-raspberrypi.de/raspberry-pi-samba-server-dateien-lokales-netzwerk-teilen/
 
+## Quickstart menu
+[Downloading and compiling PiStorm](https://github.com/andiweli/pistorm-setup-help#downloading-and-compiling-pistorm)
+
 ## Let's start...
 
 Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH is running and system is up to date with `sudo apt update && sudo apt upgrade`...
@@ -60,7 +63,7 @@ WantedBy=multi-user.target
 * `sudo reboot` (optional) to reboot the Pi to test the autostart
 
 
-### Activating Internet-access on Pi-side
+### Activating Internet-access on Pi-side (optional)
 * `sudo apt install python3-pip`
 * `sudo pip3 install python-pytun`
 * `sudo cp /home/pi/pistorm/a314/files_pi/eth-config-pi/tap0 /etc/network/interfaces.d/`
@@ -76,13 +79,13 @@ Agree to the IPv4 question, You can pick any answer for IPv6.
 The whole process including set-up on Amiga-side is shown [here](https://www.retro32.com/amiga-resources/240820213135-pistorm-installation-and-setup-guide-apps-pidisk-networking-and-rtg-a314).
 
 
-### Minimizing startup-output
+### Minimizing startup-output (optional)
 * `sudo nano /boot/config.txt` and add "disable splash=1" at the end of the file to disable the Pi splash screen
 * `sudo nano /boot/cmdline.txt` and add "logo.nologo consoleblank=0 loglevel=1 quiet" at the end of the line (NO NEW LINE) to disable logo and verbose output
 * `sudo systemctl disable getty@tty3` to remove the login prompt
 * `sudo reboot` (optional) to reboot the Pi and test the minimized output
 
-### Show a Splash screen
+### Show a Splash screen (optional)
 **Preparation:** There's a Splash screen attached named [splash.png](https://github.com/andiweli/pistorm-setup-help/blob/main/splash.png). Create a folder `fbi` in your home directory and copy the file in the new created folder. This script os an improved version that works for both - fake and full KMS drivers on Raspberry Pi. The whole process including comments and fixes can be found [here](https://www.hackster.io/kamaluddinkhan/changing-the-splash-screen-on-your-raspberry-pi-7aee31).
 
 * `sudo apt install fbi`
@@ -118,7 +121,7 @@ WantedBy=sysinit.target
 * `sudo reboot` (optional) to reboot the Pi and test the splash screen
 
 
-### Further tools for custom usage
+### Further tools for custom usage (optional)
 
 Install the filemanager Midnight Commander...
 * `sudo apt install mc`
