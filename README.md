@@ -90,7 +90,7 @@ The whole process including set-up on Amiga-side is shown [here](https://www.ret
 » [back to the quickstart-menu](#quickstart-menu)
 
 ## Minimizing startup-output (optional)
-* `sudo nano /boot/config.txt` and add "disable splash=1" at the end of the file to disable the Pi splash screen
+* `sudo nano /boot/config.txt` and add "disable splash=1" and "dtoverlay=sdtweak,overclock_50=100" at the end of the file to disable the Pi splash screen and add maximum microSD performance
 * `sudo nano /boot/cmdline.txt` and add "logo.nologo consoleblank=0 loglevel=1 quiet" at the end of the line (NO NEW LINE) to disable logo and verbose output
 * `sudo systemctl disable getty@tty3` to remove the login prompt
 * `sudo reboot` (optional) to reboot the Pi and test the minimized output
