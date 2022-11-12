@@ -30,7 +30,7 @@ Sources used here are as follows:
 * `cd pistorm`
 * `make PLATFORM=PI3_BULLSEYE`
 
-Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs (kickstart, hardfiles, settings). It will load by default.
+Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs (kickstart*, hardfiles*, settings). It will load by default.
 
 
 ### Running PiStorm for test purposes
@@ -170,5 +170,11 @@ writeable = yes
 * `sudo smbpasswd -a pi` to set a password for your user
 * `sudo service smbd restart` to restart the Samba server
 * `sudo reboot` (optional) to reboot the Pi and test the Samba access
+
+---
+
+*For copying kickstarts and hardfiles directly on a Window computer you can...
+* either use [Linux File Systems for Windows](https://www.paragon-software.com/de/home/linuxfs-windows/)
+* or copy over-the-air by [using the Samba protocol](#further-tools-for-custom-usage-optional) installed earlier
 
 *DISCLAIMER: I TAKE NO RESPONSIBILITY FOR DAMAGES.*
