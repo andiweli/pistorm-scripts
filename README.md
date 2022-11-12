@@ -13,6 +13,12 @@ Sources used here are as follows:
 
 ## Quickstart menu
 [Downloading and compiling PiStorm](#downloading-and-compiling-pistorm)
+[Downloading the FPGA update]()
+[Autostart PiStorm and boot-up]()
+[Activate internet access on Pi-side (optional)]()
+[Minimizing startup-output (optional)]()
+[Show a Splash screen (optional)]()
+[Further tools for custom usage (optional)]()
 
 ## Let's start...
 
@@ -63,7 +69,7 @@ WantedBy=multi-user.target
 * `sudo reboot` (optional) to reboot the Pi to test the autostart
 
 
-### Activating Internet-access on Pi-side (optional)
+### Activate internet-access on Pi-side (optional)
 * `sudo apt install python3-pip`
 * `sudo pip3 install python-pytun`
 * `sudo cp /home/pi/pistorm/a314/files_pi/eth-config-pi/tap0 /etc/network/interfaces.d/`
