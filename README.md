@@ -12,7 +12,7 @@ Sources used here are as follows:
 * https://tutorials-raspberrypi.de/raspberry-pi-samba-server-dateien-lokales-netzwerk-teilen/
 
 ## Quickstart menu
-[Downloading and compiling PiStorm](https://github.com/andiweli/pistorm-setup-help#downloading-and-compiling-pistorm)
+[Downloading and compiling PiStorm](#downloading-and-compiling-pistorm)
 
 ## Let's start...
 
