@@ -1,6 +1,6 @@
-# PiStorm Scipts
+# PiStorm Setup Help
 ### Several PiStorm scripts, optimizations and enhancements
-> The main purpose is/was for private use and backup and not to grab everything again from 10ish websites when rebuilding a PiStorm.
+> The main purpose is/was `for private use and backup` and not to grab everything again from 10ish websites when rebuilding a PiStorm. Also I have added all fixes from authors and users. *DISCLAIMER: I TAKE NO RESPONSIBILITY FOR DAMAGES.*
 
 Sources used here are as follows:
 * https://github.com/captain-amygdala/pistorm
@@ -54,3 +54,19 @@ WantedBy=multi-user.target
 * `sudo systemctl enable pistorm.service`
 * `sudo systemctl daemon-reload`
 
+### Activating Internet-access on Pi-side
+* `sudo apt install python3-pip`
+* `sudo pip3 install python-pytun`
+* `sudo cp /home/pi/pistorm/a314/files_pi/eth-config-pi/tap0 /etc/network/interfaces.d/`
+* `sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
+* `sudo iptables -A FORWARD -i wlan0 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT`
+* `sudo iptables -A FORWARD -i tap0 -o wlan0 -j ACCEPT`
+* `sudo apt install iptables-persistent`
+
+Agree to the IPv4 question, You can pick any answer for IPv6.
+
+* `sudo nano /etc/sysctl.conf`
+
+Uncomment the line, by removing the # in front of `net.ipv4.ip_forward=1`
+
+The whole process including set-up on Amiga-side is shown [here](https://www.retro32.com/amiga-resources/240820213135-pistorm-installation-and-setup-guide-apps-pidisk-networking-and-rtg-a314).
