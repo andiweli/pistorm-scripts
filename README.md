@@ -24,7 +24,7 @@ Sources used here are as follows:
 
 Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH is running and system is up to date with `sudo apt update && sudo apt upgrade`...
 
-### Downloading and compiling PiStorm
+## Downloading and compiling PiStorm
 * `sudo apt-get install git libasound2-dev libdrm-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev`
 * `git clone https://github.com/captain-amygdala/pistorm.git`
 * `cd pistorm`
@@ -33,20 +33,21 @@ Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH
 Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs. It will load by default.
 
 
-### Running PiStorm for test purposes
+## Running PiStorm for test purposes
 * `sudo ./emulator`
 
-[back to the quickstart-menu](#quickstart-menu)
+» [back to the quickstart-menu](#quickstart-menu)
 
-### Downloading the FPGA Update(s)
+## Downloading the FPGA Update(s)
 * `sudo apt-get install openocd`
 * `git clone https://github.com/LemaruX/PiStorm-Firmware`
 * `sudo mv PiStorm-Firmware firmware`
 
 The available FPGA Firmwares are shown [here](https://github.com/LemaruX/PiStorm-Firmware#included-firmware).
 
+» [back to the quickstart-menu](#quickstart-menu)
 
-### Autostarting PiStorm at boot-up
+## Autostarting PiStorm at boot-up
 * `sudo nano /etc/systemd/system/pistorm.service` and insert the following text - and save with STRG-X
 
 ```
@@ -69,8 +70,9 @@ WantedBy=multi-user.target
 * `sudo systemctl daemon-reload`
 * `sudo reboot` (optional) to reboot the Pi to test the autostart
 
+» [back to the quickstart-menu](#quickstart-menu)
 
-### Activate internet-access on Pi-side (optional)
+## Activate internet-access on Pi-side (optional)
 * `sudo apt install python3-pip`
 * `sudo pip3 install python-pytun`
 * `sudo cp /home/pi/pistorm/a314/files_pi/eth-config-pi/tap0 /etc/network/interfaces.d/`
@@ -85,14 +87,17 @@ Agree to the IPv4 question, You can pick any answer for IPv6.
 
 The whole process including set-up on Amiga-side is shown [here](https://www.retro32.com/amiga-resources/240820213135-pistorm-installation-and-setup-guide-apps-pidisk-networking-and-rtg-a314).
 
+» [back to the quickstart-menu](#quickstart-menu)
 
-### Minimizing startup-output (optional)
+## Minimizing startup-output (optional)
 * `sudo nano /boot/config.txt` and add "disable splash=1" at the end of the file to disable the Pi splash screen
 * `sudo nano /boot/cmdline.txt` and add "logo.nologo consoleblank=0 loglevel=1 quiet" at the end of the line (NO NEW LINE) to disable logo and verbose output
 * `sudo systemctl disable getty@tty3` to remove the login prompt
 * `sudo reboot` (optional) to reboot the Pi and test the minimized output
 
-### Show a Splash screen (optional)
+» [back to the quickstart-menu](#quickstart-menu)
+
+## Show a Splash screen (optional)
 **Preparation:** There's a Splash screen attached named [splash.png](https://github.com/andiweli/pistorm-setup-help/blob/main/splash.png). Create a folder `fbi` in your home directory and copy the file in the new created folder. This script os an improved version that works for both - fake and full KMS drivers on Raspberry Pi. The whole process including comments and fixes can be found [here](https://www.hackster.io/kamaluddinkhan/changing-the-splash-screen-on-your-raspberry-pi-7aee31).
 
 * `sudo apt install fbi`
@@ -127,8 +132,9 @@ WantedBy=sysinit.target
 * `sudo systemctl enable splashscreen.path`
 * `sudo reboot` (optional) to reboot the Pi and test the splash screen
 
+» [back to the quickstart-menu](#quickstart-menu)
 
-### Further tools for custom usage (optional)
+## Further tools for custom usage (optional)
 
 Install the filemanager Midnight Commander...
 * `sudo apt install mc`
