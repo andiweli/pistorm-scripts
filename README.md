@@ -23,18 +23,21 @@ Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH
 
 Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs. It will load by default.
 
+
 ### Running PiStorm for test purposes
 * `sudo ./emulator`
+
 
 ### Downloading the FPGA Update(s)
 * `sudo apt-get install openocd`
 * `git clone https://github.com/LemaruX/PiStorm-Firmware`
-* `cd PiStorm-Firmware`
+* `sudo mv PiStorm-Firmware firmware`
 
 The available FPGA Firmwares are shown [here](https://github.com/LemaruX/PiStorm-Firmware#included-firmware).
 
+
 ### Autostarting PiStorm at boot-up
-* `sudo nano /etc/systemd/system/pistorm.service`
+* `sudo nano /etc/systemd/system/pistorm.service` and insert the following text - and save with STRG-X
 
 ```
 [Unit]
@@ -54,6 +57,8 @@ WantedBy=multi-user.target
 
 * `sudo systemctl enable pistorm.service`
 * `sudo systemctl daemon-reload`
+* `sudo reboot` (optional) to reboot the Pi to test the autostart
+
 
 ### Activating Internet-access on Pi-side
 * `sudo apt install python3-pip`
@@ -66,17 +71,22 @@ WantedBy=multi-user.target
 
 Agree to the IPv4 question, You can pick any answer for IPv6.
 
-* `sudo nano /etc/sysctl.conf`
-
-Uncomment the line, by removing the # in front of `net.ipv4.ip_forward=1`
+* `sudo nano /etc/sysctl.conf` and uncomment the line, by removing the # in front of `net.ipv4.ip_forward=1`
 
 The whole process including set-up on Amiga-side is shown [here](https://www.retro32.com/amiga-resources/240820213135-pistorm-installation-and-setup-guide-apps-pidisk-networking-and-rtg-a314).
 
-### Minimizing startup-output and showing a Splash screen
-**Preparation:** There's a Splash screen attached named [splash.png](https://github.com/andiweli/pistorm-setup-help/blob/main/splash.png). Create a folder `fbi` in your home directory and copy the file in the new created folder. This script os an improved version that works for both - fake and full KMS drivers on Raspberry Pi.
+
+### Minimizing startup-output
+* `sudo nano /boot/config.txt` and add "disable splash=1" at the end of the file to disable the Pi splash screen
+* `sudo nano /boot/cmdline.txt` and add "logo.nologo consoleblank=0 loglevel=1 quiet" at the end of the line (NO NEW LINE) to disable logo and verbose output
+* `sudo systemctl disable getty@tty3` to remove the login prompt
+* `sudo reboot` (optional) to reboot the Pi and test the minimized output
+
+### Show a Splash screen
+**Preparation:** There's a Splash screen attached named [splash.png](https://github.com/andiweli/pistorm-setup-help/blob/main/splash.png). Create a folder `fbi` in your home directory and copy the file in the new created folder. This script os an improved version that works for both - fake and full KMS drivers on Raspberry Pi. The whole process including comments and fixes can be found [here](https://www.hackster.io/kamaluddinkhan/changing-the-splash-screen-on-your-raspberry-pi-7aee31).
 
 * `sudo apt install fbi`
-* `sudo nano /etc/systemd/system/splashscreen.service`
+* `sudo nano /etc/systemd/system/splashscreen.service` and insert the following text - and save with STRG-X
 
 ```
 [Unit]
@@ -91,7 +101,7 @@ StandardOutput=tty
 WantedBy=sysinit.target
 ```
 
-* `sudo nano /etc/systemd/system/splashscreen.path`
+* `sudo nano /etc/systemd/system/splashscreen.path` and insert the following text - and save with STRG-X
 
 ```
 [Unit]
@@ -105,3 +115,44 @@ WantedBy=sysinit.target
 ```
 
 * `sudo systemctl enable splashscreen.path`
+* `sudo reboot` (optional) to reboot the Pi and test the splash screen
+
+
+### Further tools for custom usage
+
+Install the filemanager Midnight Commander...
+* `sudo apt install mc`
+
+Install Samba for direct-access over WiFi at your home...
+* `sudo apt-get install samba samba-common-bin`
+* `sudo rm /etc/samba/smb.conf` to remove the default configuration
+* `sudo nano /etc/samba/smb.conf` and insert the following text - and save with STRG-X
+
+```
+[global]
+workgroup = WORKGROUP
+server string = RasPi-PiStorm
+netbios name = RasPi-PiStorm
+dns proxy = no
+passdb backend = tdbsam
+
+### Authentication
+security = user
+map to guest = never
+guest account = nobody
+encrypt passwords = true
+
+[PiStorm-Share]
+path = /home/pi/pistorm
+browseable = yes
+read only = no
+create mask = 0775
+directory mask = 0775
+writeable = yes
+```
+
+* `sudo smbpasswd -a pi` to set a password for your user
+* `sudo service smbd restart` to restart the Samba server
+* `sudo reboot` (optional) to reboot the Pi and test the Samba access
+
+*DISCLAIMER: I TAKE NO RESPONSIBILITY FOR DAMAGES.*
