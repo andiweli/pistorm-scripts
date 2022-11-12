@@ -36,6 +36,7 @@ Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and confi
 ### Running PiStorm for test purposes
 * `sudo ./emulator`
 
+[back to the quickstart-menu](#quickstart-menu)
 
 ### Downloading the FPGA Update(s)
 * `sudo apt-get install openocd`
