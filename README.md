@@ -33,7 +33,7 @@ Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH
 Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs. It will load by default.
 
 
-## Running PiStorm for test purposes
+### Running PiStorm for test purposes
 * `sudo ./emulator`
 
 » [back to the quickstart-menu](#quickstart-menu)
