@@ -51,6 +51,7 @@ WorkingDirectory=/home/pi/pistorm
 [Install]
 WantedBy=multi-user.target
 ```
+
 * `sudo systemctl enable pistorm.service`
 * `sudo systemctl daemon-reload`
 
@@ -70,3 +71,37 @@ Agree to the IPv4 question, You can pick any answer for IPv6.
 Uncomment the line, by removing the # in front of `net.ipv4.ip_forward=1`
 
 The whole process including set-up on Amiga-side is shown [here](https://www.retro32.com/amiga-resources/240820213135-pistorm-installation-and-setup-guide-apps-pidisk-networking-and-rtg-a314).
+
+### Minimizing startup-output and showing a Splash screen
+**Preparation:** There's a Splash screen attached named [splash.png](https://github.com/andiweli/pistorm-setup-help/blob/main/splash.png). Create a folder `fbi` in your home directory and copy the file in the new created folder. This script os an improved version that works for both - fake and full KMS drivers on Raspberry Pi.
+
+* `sudo apt install fbi`
+* `sudo nano /etc/systemd/system/splashscreen.service`
+
+```
+[Unit]
+Description=Splash screen
+
+[Service]
+ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /home/pi/fbi/splash.png
+StandardInput=tty
+StandardOutput=tty
+
+[Install]
+WantedBy=sysinit.target
+```
+
+* `sudo nano /etc/systemd/system/splashscreen.path`
+
+```
+[Unit]
+Description=Splash screen
+
+[Path]
+PathExists=/dev/fb0
+
+[Install]
+WantedBy=sysinit.target
+```
+
+* `sudo systemctl enable splashscreen.path`
