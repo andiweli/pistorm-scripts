@@ -13,12 +13,12 @@ Sources used here are as follows:
 
 ## Quickstart menu
 [Downloading and compiling PiStorm](#downloading-and-compiling-pistorm)
-[Downloading the FPGA update]()
-[Autostart PiStorm and boot-up]()
-[Activate internet access on Pi-side (optional)]()
-[Minimizing startup-output (optional)]()
-[Show a Splash screen (optional)]()
-[Further tools for custom usage (optional)]()
+[Downloading the FPGA update](#downloading-the-fpga-updates)
+[Autostart PiStorm and boot-up](#autostarting-pistorm-at-boot-up)
+[Activate internet access on Pi-side (optional)](#activate-internet-access-on-pi-side-optional)
+[Minimizing startup-output (optional)](#minimizing-startup-output-optional)
+[Show a Splash screen (optional)](#show-a-splash-screen-optional)
+[Further tools for custom usage (optional)](#further-tools-for-custom-usage-optional)
 
 ## Let's start...
 
