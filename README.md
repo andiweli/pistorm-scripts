@@ -1,6 +1,6 @@
 # PiStorm Setup Help
 ### Several PiStorm scripts, optimizations and enhancements
-> The main purpose is/was `for private use and backup` and not to grab everything again from 10ish websites when rebuilding a PiStorm. Also I have added all fixes from authors and users. *DISCLAIMER: I TAKE NO RESPONSIBILITY FOR DAMAGES.*
+> The main purpose is/was `for private use and backup` and not to grab everything again from 10ish websites when rebuilding a PiStorm. Also I have added all fixes from the authors and several users. My PiStorm is set-up that way, and everything works - but as you know... I TAKE NO RESPONSIBILITY FOR DAMAGES.
 
 Sources used here are as follows:
 * https://github.com/captain-amygdala/pistorm
@@ -22,7 +22,7 @@ Sources used here are as follows:
 
 ## Let's start...
 
-Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH is running and system is up to date with `sudo apt update && sudo apt upgrade`...
+> Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH is running and system is up to date with `sudo apt update && sudo apt upgrade`... also you already have a working .hdf Workbench and optional additional .hdf files.
 
 ## Downloading and compiling PiStorm
 * `sudo apt-get install git libasound2-dev libdrm-dev libegl1-mesa-dev libgles2-mesa-dev libgbm-dev`
@@ -30,7 +30,7 @@ Assuming the Pi is running BULLSEYE and is set-up and ready, WiFi is online, SSH
 * `cd pistorm`
 * `make PLATFORM=PI3_BULLSEYE`
 
-Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs. It will load by default.
+Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and configure it to your needs (kickstart, hardfiles, settings). It will load by default.
 
 
 ### Running PiStorm for test purposes
@@ -43,7 +43,7 @@ Copy the amiga.cfg to default.cfg with `sudo cp amiga.cfg default.cfg` and confi
 * `git clone https://github.com/LemaruX/PiStorm-Firmware`
 * `sudo mv PiStorm-Firmware firmware`
 
-The available FPGA Firmwares are shown [here](https://github.com/LemaruX/PiStorm-Firmware#included-firmware).
+The available FPGA Firmwares and the flashing-process are shown [here](https://github.com/LemaruX/PiStorm-Firmware#included-firmware).
 
 » [back to the quickstart-menu](#quickstart-menu)
 
